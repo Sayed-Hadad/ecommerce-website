@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Shop PC</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="./img/logo.png" alt="Logo" class="logo">
+            <h1>Magic Shop PC</h1>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle">تبديل الوضع</button>
+            <div class="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="#" class="category active" data-category="all">كل المنتجات</a></li>
+                    <li><a href="#" class="category" data-category="computers">أجهزة كمبيوتر</a></li>
+                    <li><a href="#" class="category" data-category="monitors">شاشات</a></li>
+                    <li><a href="#" class="category" data-category="accessories">إكسسوارات</a></li>
+                    <li><a href="#" class="category" data-category="laptops">لابتوب</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <div class="sorting-tools">
+                <label for="sort-by">ترتيب حسب:</label>
+                <select id="sort-by">
+                    <option value="price-asc">السعر: من الأقل إلى الأعلى</option>
+                    <option value="price-desc">السعر: من الأعلى إلى الأقل</option>
+                    <option value="name-asc">الاسم: من أ إلى ي</option>
+                    <option value="name-desc">الاسم: من ي إلى أ</option>
+                </select>
+            </div>
+            <div class="product-cards">
+                <!-- Dummy Card 1 -->
+                <div class="card" data-category="laptops" data-name="لا توب ايديا باد دويت 3" data-price="25410">
+                    <div class="image-container">
+                        <img src="./img/laptops/1.jpg" alt="لاب توب ايديا باد دويت 3">
+                    </div>
+                    <div class="card-content">
+                        <h2>لاب توب ايديا باد دويت 3</h2>
+                        <p class="price">25,410ج</p>
+                        <p class="description"></p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+                <div class="card" data-category="laptops" data-name="لا توب ايديا باد دويت 3" data-price="10000">
+                    <div class="image-container">
+                        <img src="./img/laptops/2.jpg" alt="لاب توب ايديا باد دويت 3">
+                    </div>
+                    <div class="card-content">
+                        <h2>اتش بي لاب توب</h2>
+                        <p class="price">ج1000</p>
+                        <p class="description"></p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <!-- Dummy Card 2 -->
+                <div class="card" data-category="accessories" data-name="كيبورد ديل سليم" data-price="100">
+                    <div class="image-container">
+                        <img src="./img/accessories/1.jpg" alt="كيبورد ديل سليم">
+                    </div>
+                    <div class="card-content">
+                        <h2>كيبورد ديل استيراد</h2>
+                        <p class="price">100ج</p>
+                        <p class="description">كيبورد أنيق وخفيف الوزن.</p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories" data-name="كيبورد اتش بي استيراد" data-price="120">
+                    <div class="image-container">
+                        <img src="./img/accessories/2.jpg" alt="كيبورد اتش بي ">
+                    </div>
+                    <div class="card-content">
+                        <h2>كيبورد اتش بي استيراد</h2>
+                        <p class="price">120ج</p>
+                        <p class="description">كيبورد أنيق وخفيف الوزن.</p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <!-- Dummy Card 3 -->
+                <div class="card" data-category="laptops" data-name="hp victus laptop" data-price="25000">
+                    <div class="image-container">
+                        <img src="./img/laptops/3.jpg" alt="لابتوب ديل">
+                    </div>
+                    <div class="card-content">
+                        <h2>Hp Victus</h2>
+                        <p class="price">25000ج</p>
+                        <p class="description">لابتوب قوي وعالي الأداء.</p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+                <div class="card" data-category="computers" data-name="Hp 600 G1" data-price="2500">
+                    <div class="image-container">
+                        <img src="./img/computers/1.jpg" alt="Hp 600 G1">
+                    </div>
+                    <div class="card-content">
+                        <h2>Hp 600 G1</h2>
+                        <p class="price">2500ج</p>
+                        <p class="description">لابتوب قوي وعالي الأداء.</p>
+                        <div class="quantity-control">
+                            <button class="decrease-quantity">-</button>
+                            <input type="number" class="quantity" value="1" min="1" readonly>
+                            <button class="increase-quantity">+</button>
+                        </div>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div>© 2024 Magic Shop PC. All rights reserved.</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <div class="flash-message" id="flash-message"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-content">
+            <button class="close-button" id="close-cart">&times;</button>
+            <h2>عربة التسوق</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be here -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

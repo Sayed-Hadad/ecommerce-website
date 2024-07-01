@@ -1,0 +1,448 @@
+/* Global Variables */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #333;
+    --background-color-light: #f0f0f0;
+    --background-color-dark: #121212;
+    --text-color-light: #333;
+    --text-color-dark: #f0f0f0;
+    --header-background-light: rgba(255, 255, 255, 0.8);
+    --header-background-dark: rgba(18, 18, 18, 0.8);
+    --border-radius: 8px;
+    --highlight-color: #ff9800;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s, color 0.3s;
+    direction: rtl;
+}
+
+body.dark-mode {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: var(--header-background-light);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    transition: background 0.3s;
+}
+
+body.dark-mode header {
+    background: var(--header-background-dark);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
+header h1 {
+    font-size: 1.5em;
+    color: inherit; /* Ensures header text color matches body */
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between the button and the cart icon as needed */
+}
+
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-icon-container i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--highlight-color);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+}
+
+#theme-toggle {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+}
+
+#theme-toggle:hover {
+    background-color: #45a049;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    padding-top: 100px;
+    justify-content: flex-start; /* Start cards from the left */
+}
+
+aside {
+    width: 220px;
+    max-width: 160px; /* Adjusted width for the sidebar */
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    margin: 10px;
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    margin: 10px 0;
+}
+
+aside nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+aside nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+aside nav ul li a.active {
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align cards to start from the left */
+}
+
+.flash-message {
+    position: absolute;
+    top: 80px; /* Adjust as needed based on your header height */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--highlight-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+.flash-message.show {
+    display: block; /* Display when shown */
+}
+
+.sorting-tools {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sorting-tools label {
+    margin-right: 10px;
+}
+
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Align cards to start from the left */
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 295px; /* Set a fixed width for the card */
+    height: 490px; /* Set a fixed height for the card */
+    max-width: 100%; /* Ensure card doesn't exceed its container width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content horizontally */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .image-container {
+    height: 200px; /* Adjusted height for the image container */
+    width: 100%; /* Ensure image takes full width of container */
+    overflow: hidden;
+}
+
+.card .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card:hover .image-container img {
+    transform: scale(1.1);
+}
+
+.card .card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content horizontally */
+    text-align: center; /* Center align text */
+    margin-top: 10px; /* Adjusted margin to decrease space */
+}
+
+.card h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.card .price {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+.card .description {
+    flex: 1;
+    margin-bottom: 10px;
+    overflow: hidden; /* Hide overflow for long descriptions */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.card .quantity-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card .quantity-control button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card .quantity-control button:hover {
+    background-color: #45a049;
+}
+
+.card .quantity-control input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    border-radius: var(--border-radius);
+}
+
+.card .add-to-cart {
+    width: 100%; /* Make button width 100% of the card */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+    margin-top: auto; /* Push button to the bottom */
+}
+
+.card .add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cart-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.cart-modal-content h2 {
+    margin-top: 0;
+}
+
+.cart-modal-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-modal-content ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-modal-content ul li:last-child {
+    border-bottom: none;
+}
+
+.cart-modal-content ul li .item-info {
+    flex: 1;
+}
+
+.cart-modal-content ul li .item-info h3 {
+    margin: 0 0 5px;
+}
+
+.cart-modal-content ul li .item-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.cart-modal-content ul li .item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.cart-modal-content ul li .item-actions button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+    margin-left: 10px;
+}
+
+.cart-modal-content ul li .item-actions button:hover {
+    background-color: #45a049;
+}
+
+.empty-cart-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    aside {
+        width: 100%;
+        max-width: 160px; /* Adjusted width for the sidebar */
+        padding: 10px;
+    }
+
+    .product-cards {
+        justify-content: center;
+        gap: 15px; /* Adjusted gap between cards */
+    }
+
+    .card {
+        width: calc(50% - 10px); /* Adjust card width for better spacing, considering gap */
+        max-width: calc(50% - 10px); /* Adjust max-width for responsiveness */
+        height: auto; /* Allow cards to adjust height based on content */
+        margin-bottom: 20px;
+    }
+
+    .card h2,
+    .card .price,
+    .card .description {
+        font-size: 0.9em; /* Adjusted font size for better readability on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    aside {
+        max-width: 140px; /* Further reduced width for smaller screens */
+    }
+
+    .card {
+        width: 100%; /* Full width cards on smaller screens */
+        max-width: calc(100% - 20px); /* Adjusted max-width for gap */
+        margin-bottom: 15px;
+    }
+
+    .card h2 {
+        font-size: 0.9em; /* Adjusted font size for better readability on smaller screens */
+        margin-bottom: 5px; /* Reduced margin bottom for compactness */
+    }
+
+    .card .price {
+        font-size: 1.1em; /* Adjusted font size for price */
+    }
+
+    .card .description {
+        font-size: 0.8em; /* Adjusted font size for description */
+        margin-bottom: 5px; /* Reduced margin bottom for compactness */
+    }
+
+    .card .quantity-control {
+        margin-bottom: 10px; /* Adjusted margin bottom for quantity control */
+    }
+}
